@@ -15,8 +15,8 @@ use App\Http\Controllers\ExampleController;
 |
 */
 
-Route::get('/', [ExampleController::class, 'homePage']);
-
+Route::get('/', [UserController::class, 'showCorrectHomePage']);
 Route::get('/about', [ExampleController::class, 'aboutPage']);
 
 Route::post('/register', [UserController::class, 'register']);
+Route::post('/login', [UserController::class, 'login']);
