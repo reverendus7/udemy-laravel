@@ -54,6 +54,8 @@ class UserController extends Controller
             [
                 'username' => $user->username,
                 'postCount' => $user->posts()->count(),
+                'followersCount' => $user->followers()->count(),
+                'followingCount' => $user->followingTheseUsers()->count(),
                 'avatar' => $user->avatar,
                 'currentlyFollowing' => $currentlyFollowing
             ]
@@ -75,7 +77,7 @@ class UserController extends Controller
         return view(
             'profile-followers',
             [
-                'posts' => $user->posts()->latest()->get(),
+                'followers' => $user->followers()->latest()->get(),
             ]
         );
     }
@@ -85,7 +87,7 @@ class UserController extends Controller
         return view(
             'profile-following',
             [
-                'posts' => $user->posts()->latest()->get(),
+                'following' => $user->followingTheseUsers()->latest()->get(),
             ]
         );
     }

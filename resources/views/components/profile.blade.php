@@ -25,8 +25,8 @@
 
         <div class="profile-nav nav nav-tabs pt-2 mb-4">
             <a href="/profile/{{$sharedProfileData['username']}}" class="profile-nav-link nav-item nav-link {{Request::segment(3) == '' ? 'active' : ''}}">Posts: {{$sharedProfileData['postCount']}}</a>
-            <a href="/profile/{{$sharedProfileData['username']}}/followers" class="profile-nav-link nav-item nav-link {{Request::segment(3) == 'followers' ? 'active' : ''}}">Followers: 3</a>
-            <a href="/profile/{{$sharedProfileData['username']}}/following" class="profile-nav-link nav-item nav-link {{Request::segment(3) == 'following' ? 'active' : ''}}">Following: 2</a>
+            <a href="/profile/{{$sharedProfileData['username']}}/followers" class="profile-nav-link nav-item nav-link {{Request::segment(3) == 'followers' ? 'active' : ''}}">Followers: {{$sharedProfileData['followersCount']}}</a>
+            <a href="/profile/{{$sharedProfileData['username']}}/following" class="profile-nav-link nav-item nav-link {{Request::segment(3) == 'following' ? 'active' : ''}}">Following: {{$sharedProfileData['followingCount']}}</a>
         </div>
 
         <div class="profile-slot-content">
