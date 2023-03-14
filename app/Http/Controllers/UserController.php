@@ -102,7 +102,7 @@ class UserController extends Controller
             return view(
                 'homepage-feed',
                 [
-                    'posts' => auth()->user()->feedPosts()->latest()->get()
+                    'posts' => auth()->user()->feedPosts()->latest()->paginate(4)
                 ]
             );
         } else {
