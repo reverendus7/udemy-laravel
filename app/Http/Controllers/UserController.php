@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\OurExampleEvent;
 use App\Models\Follow;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -93,6 +94,10 @@ class UserController extends Controller
     }
 
     public function logout() {
+        event(new OurExampleEvent([
+            'username' => auth()->user()->username,
+            'action' => 'logout'
+        ]));
         auth()->logout();
         return redirect('/')->with('success', 'You are now logged out.');;
     }
@@ -121,6 +126,10 @@ class UserController extends Controller
             'password' => $incomingFields['loginpassword'],
         ])) {
             $request->session()->regenerate();
+            event(new OurExampleEvent([
+                'username' => auth()->user()->username,
+                'action' => 'login'
+            ]));
             return redirect('/')->with('success', 'You have successfully logged in.');
         } else {
             return redirect('/')->with('failure', 'Invalid login.');;
