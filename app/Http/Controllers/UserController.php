@@ -66,7 +66,7 @@ class UserController extends Controller
     public function profile(User $user) {
         $this->getSharedProfileData($user);
         return view(
-            'profile-post',
+            'profile-posts',
             [
                 'posts' => $user->posts()->latest()->get(),
             ]
